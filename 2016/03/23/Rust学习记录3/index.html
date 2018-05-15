@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Rust学习记录3 | QBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="(前话，博主怎么也没想到Rust语言，接着学下去，会这么的困恼，感觉又回到c语言的指针的时代，而且比c语言的指针感觉更加复杂，弄了三个特奇葩的概念—所有权，借用和引用，生命周期等等概念，搞得晕乎乎，难怪这是一门系统级的编程语言，要了解好引用借用等概念，才能用它来写程序，要是用错了&amp;amp;，&amp;lt;&amp;gt;等这些符号，真容易造成内存方面的各种bug，所以此次，我也只能简单的做记录，不敢随意乱写。等">
+<meta name="keywords" content="Rust">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rust学习记录3">
+<meta property="og:url" content="http://qingxiao.site/2016/03/23/Rust学习记录3/index.html">
+<meta property="og:site_name" content="QBlog">
+<meta property="og:description" content="(前话，博主怎么也没想到Rust语言，接着学下去，会这么的困恼，感觉又回到c语言的指针的时代，而且比c语言的指针感觉更加复杂，弄了三个特奇葩的概念—所有权，借用和引用，生命周期等等概念，搞得晕乎乎，难怪这是一门系统级的编程语言，要了解好引用借用等概念，才能用它来写程序，要是用错了&amp;amp;，&amp;lt;&amp;gt;等这些符号，真容易造成内存方面的各种bug，所以此次，我也只能简单的做记录，不敢随意乱写。等">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-15T12:32:03.491Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rust学习记录3">
+<meta name="twitter:description" content="(前话，博主怎么也没想到Rust语言，接着学下去，会这么的困恼，感觉又回到c语言的指针的时代，而且比c语言的指针感觉更加复杂，弄了三个特奇葩的概念—所有权，借用和引用，生命周期等等概念，搞得晕乎乎，难怪这是一门系统级的编程语言，要了解好引用借用等概念，才能用它来写程序，要是用错了&amp;amp;，&amp;lt;&amp;gt;等这些符号，真容易造成内存方面的各种bug，所以此次，我也只能简单的做记录，不敢随意乱写。等">
+  
+    <link rel="alternative" href="/atom.xml" title="QBlog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xry59.com1.z0.glb.clouddn.com/picture2.jpg?imageView2/1/w/200/h/200/interlace/1" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">RebornL</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">做个精神自由的人！做个坦率的人！（在路上...）</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/随想录">随想录</a></li>
+				        
+							<li><a href="/categories/回忆录">回忆录</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/coding-happily" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/2049308850/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+					        
+								<a class="mail" target="_blank" href="/liuqingbin100@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Rust/" style="font-size: 20px;">Rust</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/回忆/" style="font-size: 10px;">回忆</a> <a href="/tags/回忆-乐事/" style="font-size: 15px;">回忆 乐事</a> <a href="/tags/画画/" style="font-size: 10px;">画画</a> <a href="/tags/短日记/" style="font-size: 10px;">短日记</a> <a href="/tags/趣事/" style="font-size: 10px;">趣事</a> <a href="/tags/随想/" style="font-size: 10px;">随想</a> <a href="/tags/随想录/" style="font-size: 10px;">随想录</a> <a href="/tags/随感/" style="font-size: 10px;">随感</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我的思想永远不会被束缚！</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">RebornL</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xry59.com1.z0.glb.clouddn.com/picture2.jpg?imageView2/1/w/200/h/200/interlace/1" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">RebornL</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">做个精神自由的人！做个坦率的人！（在路上...）</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/随想录">随想录</a></li>
+		        
+					<li><a href="/categories/回忆录">回忆录</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/coding-happily" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/2049308850/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="/liuqingbin100@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Rust学习记录3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/23/Rust学习记录3/" class="article-date">
+  	<time datetime="2016-03-23T12:26:37.000Z" itemprop="datePublished">2016-03-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Rust学习记录3
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rust/">Rust</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/学习记录/">学习记录</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>(前话，博主怎么也没想到Rust语言，接着学下去，会这么的困恼，感觉又回到c语言的指针的时代，而且比c语言的指针感觉更加复杂，弄了三个特奇葩的概念—所有权，借用和引用，生命周期等等概念，搞得晕乎乎，难怪这是一门系统级的编程语言，要了解好引用借用等概念，才能用它来写程序，要是用错了&amp;，&lt;&gt;等这些符号，真容易造成内存方面的各种bug，所以此次，我也只能简单的做记录，不敢随意乱写。等以后，有更大的兴趣的时候，再重新研读一下，原谅博主太过懒惰了！！！)</p>
+<a id="more"></a>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">	<span class="comment">//之前这种麻烦的方式</span></span><br><span class="line">	<span class="comment">// fn foo(v1: Vec&lt;i32&gt;, v2: Vec&lt;i32&gt;) -&gt; (Vec&lt;i32&gt;, Vec&lt;i32&gt;, i32) &#123;</span></span><br><span class="line">		<span class="comment">// do stuff with v1 and v2</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">// hand back ownership, and the result of our function</span></span><br><span class="line">		<span class="comment">// (v1, v2, 42)</span></span><br><span class="line">	<span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// let v1 = vec![1, 2, 3];</span></span><br><span class="line">	<span class="comment">// let v2 = vec![1, 2, 3];</span></span><br><span class="line">	<span class="comment">//可以看得出这种方式很麻烦！</span></span><br><span class="line">	<span class="comment">// let (v1, v2, answer) = foo(v1, v2);</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//第一种引用，&amp;Vec&lt;i32&gt;</span></span><br><span class="line">	<span class="comment">//	 &amp;T	类型为一个”引用“，而与其拥有这个资源，它借用了所有权</span></span><br><span class="line">	<span class="comment">// fn foo(v1: &amp;Vec&lt;i32&gt;, v2: &amp;Vec&lt;i32&gt;) -&gt; i32 &#123;</span></span><br><span class="line">		<span class="comment">//return the answer</span></span><br><span class="line">		<span class="comment">// 42</span></span><br><span class="line">	<span class="comment">// &#125;</span></span><br><span class="line">	<span class="keyword">let</span> v1 = <span class="built_in">vec!</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">	<span class="keyword">let</span> v2 = <span class="built_in">vec!</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">	<span class="keyword">let</span> answer = foo(&amp;v1, &amp;v2);<span class="comment">//这样之后，v1和v2还是能够调用</span></span><br><span class="line">	<span class="comment">//引用的是不可改变的</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//第二种引用的类型，&amp;mut,允许改变你所引用的类型</span></span><br><span class="line">	<span class="keyword">let</span> <span class="keyword">mut</span> x = <span class="number">5</span>;</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">let</span> y = &amp;<span class="keyword">mut</span> x;</span><br><span class="line">		*y += <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">println!</span>(<span class="string">"&#123;&#125;"</span>,x);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//作用域的问题</span></span><br><span class="line">	<span class="comment">//迭代器失效</span></span><br><span class="line">	<span class="keyword">let</span> <span class="keyword">mut</span> v = <span class="built_in">vec!</span>[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> &amp;v &#123;</span><br><span class="line">		<span class="built_in">println!</span>(<span class="string">"&#123;&#125;"</span>,i);</span><br><span class="line">		v.push(<span class="number">4</span>);<span class="comment">//这个会出错，因为v已经被借用出去了</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//释放后使用</span></span><br><span class="line">	<span class="keyword">let</span> y : <span class="built_in">i32</span>;</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">let</span> x = <span class="number">5</span>;</span><br><span class="line">		y = &amp;x;<span class="comment">//这样也是不行的，当被引用的变量放在比引用变量的变量之前，也是会出错的</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">println!</span>(<span class="string">"&#123;&#125;"</span>,y);<span class="comment">//这个会出错，因为x已经不存在了，无法引用x的值</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//生命周期</span></span><br><span class="line">	<span class="comment">//(写的函数应该放在main函数之外，为了便于写笔记，放在了main里面)</span></span><br><span class="line">	<span class="function"><span class="keyword">fn</span> <span class="title">bar</span></span>&lt;<span class="symbol">'a</span>, <span class="symbol">'b</span>&gt;(x: &amp;<span class="symbol">'a</span> <span class="built_in">i32</span>,y: &amp;<span class="symbol">'b</span> <span class="built_in">i32</span>) &#123;</span><br><span class="line">		<span class="comment">//..具体的例子见第一篇连接地址中的讲解</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//关于生命周期和作用域需要各位去认真读文档了，博主自己读得是懂非懂，不敢随便分享</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//可变性</span></span><br><span class="line">	<span class="comment">//使用mut</span></span><br><span class="line">	<span class="keyword">let</span> <span class="keyword">mut</span> x = <span class="number">5</span>;</span><br><span class="line">	x = <span class="number">6</span>;<span class="comment">//定义了mut的绑定变量就可以改变自己的值</span></span><br><span class="line">	<span class="comment">//可变引用</span></span><br><span class="line">	<span class="keyword">let</span> <span class="keyword">mut</span> x = <span class="number">5</span>;</span><br><span class="line">	<span class="keyword">let</span> y = &amp;<span class="keyword">mut</span> x;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//两者都可变</span></span><br><span class="line">	<span class="keyword">let</span> <span class="keyword">mut</span> x = <span class="number">5</span>;</span><br><span class="line">	<span class="keyword">let</span> <span class="keyword">mut</span> y = &amp;<span class="keyword">mut</span> x;<span class="comment">//这样y就可以随便改变绑定的值</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//结构体</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Point</span></span> &#123;</span><br><span class="line">		x: <span class="built_in">i32</span>,</span><br><span class="line">		y: <span class="built_in">i32</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//更新语法</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Point3d</span></span> &#123;</span><br><span class="line">		x: <span class="built_in">i32</span>,</span><br><span class="line">		y: <span class="built_in">i32</span>,</span><br><span class="line">		z: <span class="built_in">i32</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">let</span> <span class="keyword">mut</span> ponit = Point3d &#123; x: <span class="number">0</span>,y: <span class="number">0</span>,z: <span class="number">0</span>&#125;;</span><br><span class="line">	point = Point3d &#123; y: <span class="number">1</span>, ..point&#125;<span class="comment">//更新了y，保留原来的x和z</span></span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="http://music.163.com/outchain/player?type=2&id=26524326&auto=1&height=66"></iframe>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/24/回忆趣事录-小学篇/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          回忆趣事录--#小学篇
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/21/心情小记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">心情小记</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Rust学习记录3" data-title="Rust学习记录3" data-url="http://qingxiao.site/2016/03/23/Rust学习记录3/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 RebornL
+    	</div>
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览量<span id="busuanzi_value_site_pv"></span>次</span>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+    <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css">
+
+
+<script src="//cdn.bootcss.com/require.js/2.1.6/require.min.js"></script>
+<script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

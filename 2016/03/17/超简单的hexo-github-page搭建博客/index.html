@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>超简单的hexo+github page搭建博客 | QBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="目录 [ TOC ] 1.在github上新建一个repo首先，先去github申请好账号创建一个仓库 创建一个跟用户民一样的github仓库，每个用户只有一个自己的github page">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="超简单的hexo+github page搭建博客">
+<meta property="og:url" content="http://qingxiao.site/2016/03/17/超简单的hexo-github-page搭建博客/index.html">
+<meta property="og:site_name" content="QBlog">
+<meta property="og:description" content="目录 [ TOC ] 1.在github上新建一个repo首先，先去github申请好账号创建一个仓库 创建一个跟用户民一样的github仓库，每个用户只有一个自己的github page">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://7xry59.com1.z0.glb.clouddn.com/hexo1.jpg">
+<meta property="og:image" content="http://7xry59.com1.z0.glb.clouddn.com/hexo2.jpg">
+<meta property="og:image" content="http://7xry59.com1.z0.glb.clouddn.com/hexo3.jpg">
+<meta property="og:image" content="http://7xry59.com1.z0.glb.clouddn.com/hexo4.jpg">
+<meta property="og:image" content="http://7xry59.com1.z0.glb.clouddn.com/hexo5.jpg">
+<meta property="og:image" content="http://7xry59.com1.z0.glb.clouddn.com/hexo6.jpg">
+<meta property="og:updated_time" content="2018-05-15T12:32:04.039Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="超简单的hexo+github page搭建博客">
+<meta name="twitter:description" content="目录 [ TOC ] 1.在github上新建一个repo首先，先去github申请好账号创建一个仓库 创建一个跟用户民一样的github仓库，每个用户只有一个自己的github page">
+<meta name="twitter:image" content="http://7xry59.com1.z0.glb.clouddn.com/hexo1.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="QBlog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xry59.com1.z0.glb.clouddn.com/picture2.jpg?imageView2/1/w/200/h/200/interlace/1" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">RebornL</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">做个精神自由的人！做个坦率的人！（在路上...）</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/随想录">随想录</a></li>
+				        
+							<li><a href="/categories/回忆录">回忆录</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/coding-happily" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/2049308850/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+					        
+								<a class="mail" target="_blank" href="/liuqingbin100@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Rust/" style="font-size: 20px;">Rust</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/回忆/" style="font-size: 10px;">回忆</a> <a href="/tags/回忆-乐事/" style="font-size: 15px;">回忆 乐事</a> <a href="/tags/画画/" style="font-size: 10px;">画画</a> <a href="/tags/短日记/" style="font-size: 10px;">短日记</a> <a href="/tags/趣事/" style="font-size: 10px;">趣事</a> <a href="/tags/随想/" style="font-size: 10px;">随想</a> <a href="/tags/随想录/" style="font-size: 10px;">随想录</a> <a href="/tags/随感/" style="font-size: 10px;">随感</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我的思想永远不会被束缚！</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">RebornL</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xry59.com1.z0.glb.clouddn.com/picture2.jpg?imageView2/1/w/200/h/200/interlace/1" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">RebornL</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">做个精神自由的人！做个坦率的人！（在路上...）</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/随想录">随想录</a></li>
+		        
+					<li><a href="/categories/回忆录">回忆录</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/coding-happily" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/2049308850/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="/liuqingbin100@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-超简单的hexo-github-page搭建博客" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/17/超简单的hexo-github-page搭建博客/" class="article-date">
+  	<time datetime="2016-03-17T04:44:40.000Z" itemprop="datePublished">2016-03-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      超简单的hexo+github page搭建博客
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/学习记录/">学习记录</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>目录</p>
+<p>[ TOC ]</p>
+<h2 id="1-在github上新建一个repo"><a href="#1-在github上新建一个repo" class="headerlink" title="1.在github上新建一个repo"></a>1.在github上新建一个repo</h2><p><strong>首先，先去<a href="https://github.com/" target="_blank" rel="noopener">github</a>申请好账号</strong><br><strong>创建一个仓库</strong><br><img src="http://7xry59.com1.z0.glb.clouddn.com/hexo1.jpg" alt="hexo1"></p>
+<p><strong>创建一个跟用户民一样的github仓库，每个用户只有一个自己的github page</strong><br><a id="more"></a><br><img src="http://7xry59.com1.z0.glb.clouddn.com/hexo2.jpg" alt="hexo2"></p>
+<p><strong>然后，最后得到</strong><br><img src="http://7xry59.com1.z0.glb.clouddn.com/hexo3.jpg" alt="hexo3"></p>
+<p><strong>然后你可以尝试访问以下，<a href="#">http://username.github.io</a>,如果成功访问，这一部分就搞定。</strong></p>
+<h2 id="2-使用hexo搭建博客"><a href="#2-使用hexo搭建博客" class="headerlink" title="2.使用hexo搭建博客"></a>2.使用hexo搭建博客</h2><p><strong>首先要先安装了nodejs和npm（Windows平台的安装包就包括了npm）</strong></p>
+<p><strong>之后，先使用npm安装hexo-cli</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br></pre></td></tr></table></figure></p>
+<p><strong>在你自己新建目录里（我的是D:\Github\coding-happily.github.io）,打开git bash</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br><span class="line">$ npn install</span><br></pre></td></tr></table></figure></p>
+<p><strong>目录结构是这样的</strong><br><img src="http://7xry59.com1.z0.glb.clouddn.com/hexo4.jpg" alt="hexo4"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p><strong>打开地址：<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a>，就能看到hexo搭建的博客</strong><br><img src="http://7xry59.com1.z0.glb.clouddn.com/hexo5.jpg" alt="hexo5"></p>
+<p>第二部分就准备好了</p>
+<h2 id="3-将hexo生成的代码部署到github上"><a href="#3-将hexo生成的代码部署到github上" class="headerlink" title="3.将hexo生成的代码部署到github上"></a>3.将hexo生成的代码部署到github上</h2><p><strong>要将代码部署到github上，先安装hexo-deployer-git</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p><strong>打开_config.yml文件，修改添加如下</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:yourname/yourname.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<p><strong>配置完成后，就开始上传代码</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure></p>
+<p><strong>完成之后，可以尝试打开<a href="http://username.github.io/" target="_blank" rel="noopener">http://username.github.io/</a> 来查看效果如何</strong></p>
+<h2 id="4-配置域名部分"><a href="#4-配置域名部分" class="headerlink" title="4.配置域名部分"></a>4.配置域名部分</h2><p><strong>前面基本完成了一个静态博客的搭建</strong></p>
+<p><strong>关于域名部分配置，我主要想说的是，在域名解析的时候，填写的ip地址为github page提供，如果不知道，可以谷歌一下，一下就能查到</strong><br><strong>在<a href="https://help.github.com/articles/setting-up-an-apex-domain/" target="_blank" rel="noopener">这个网址</a></strong><br><img src="http://7xry59.com1.z0.glb.clouddn.com/hexo6.jpg" alt="hexo6"></p>
+<p>推荐两个网站<br><em><a href="https://xuanwo.org/2015/03/26/hexo-intor/" target="_blank" rel="noopener">史上最详细的Hexo博客搭建图文教程</a><br><br>
+</em><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="noopener">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></p>
+<h2 id="5-最后"><a href="#5-最后" class="headerlink" title="5.最后"></a>5.最后</h2><p>我其实真的就是向上面那样撘完自己的博客，其实真的很简单的。<br>希望各位也能搭建自己的博客！！！</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="http://music.163.com/outchain/player?type=2&id=26524326&auto=1&height=66"></iframe>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/18/一些琐碎感/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          一些琐碎感和目标
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/16/分享几幅画/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">分享几幅画</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="超简单的hexo-github-page搭建博客" data-title="超简单的hexo+github page搭建博客" data-url="http://qingxiao.site/2016/03/17/超简单的hexo-github-page搭建博客/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 RebornL
+    	</div>
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览量<span id="busuanzi_value_site_pv"></span>次</span>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+    <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css">
+
+
+<script src="//cdn.bootcss.com/require.js/2.1.6/require.min.js"></script>
+<script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
